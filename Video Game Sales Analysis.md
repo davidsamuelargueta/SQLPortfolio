@@ -10,13 +10,13 @@ FROM
 	vgsales
 WHERE
 	NA_Sales = (SELECT
-					max(NA_Sales)
-				FROM
-					vgsales);
+			max(NA_Sales)
+		    FROM
+			vgsales);
 ````
 
 -- Best Selling Game in Europe
-''''sql
+````sql
 SELECT
 	Name as "Best Selling Game in Europe",
 	Publisher as "Published By",
@@ -28,7 +28,7 @@ WHERE
 					max(EU_Sales)
 				FROM
 					vgsales);
-''''
+````
 -- Best Selling Game in Japan
 SELECT
 	Name as "Best Selling Game in Japan",
