@@ -63,3 +63,24 @@ JP_Sales = (SELECT
 	    and
 		2009)
 ````
+#Top Selling Publishers Between 2000 and 2009
+````sql
+-- What publishers sold the most between 2000 and 2009
+select 
+	Publisher,
+	round(sum(Global_Sales), 2) as "Total Number of Sales between 2000 and 2009"
+FROM
+	vgsales
+where 
+	year	
+between 
+	2000 
+and 
+	2009
+group by
+ Publisher
+ order by
+	round(sum(Global_Sales), 2) desc
+limit 	
+	10
+````
