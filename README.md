@@ -1,6 +1,6 @@
 - Dataset Obtained from Kaggle: https://www.kaggle.com/datasets/gregorut/videogamesales
 
-# Display the Best Selling Game in North America
+# What is the Best Selling Game in North America?
 SELECT
 	Name as "Best Selling Game in North America",
 	Publisher as "Published By",
@@ -13,7 +13,7 @@ WHERE
 				FROM
 					vgsales);
 
--- Best Selling Game in Europe
+# What is the Best Selling Game in Europe?
 SELECT
 	Name as "Best Selling Game in Europe",
 	Publisher as "Published By",
@@ -26,7 +26,7 @@ WHERE
 				FROM
 					vgsales);
 
--- Best Selling Game in Japan
+# What isBest Selling Game in Japan?
 SELECT
 	Name as "Best Selling Game in Japan",
 	Publisher as "Published By",
