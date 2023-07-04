@@ -1,8 +1,7 @@
 #Video Game Sales Analysis
 -- The following dataset was taken from https://www.kaggle.com/datasets/gregorut/videogamesales, which contains data regarding video games sales in North America, Europe, Japan and Global Sales.
 
-#The Best Selling Game Between 2000 and 2009
--- Best Selling Game in North America
+````sql
 SELECT
 	Name as "Best Selling Game in North America",
 	Publisher as "Published By",
@@ -14,6 +13,11 @@ WHERE
 					max(NA_Sales)
 				FROM
 					vgsales);
+````
+
+#The Best Selling Game Between 2000 and 2009
+-- Best Selling Game in North America
+
 -- Best Selling Game in Europe
 SELECT
 	Name as "Best Selling Game in Europe",
