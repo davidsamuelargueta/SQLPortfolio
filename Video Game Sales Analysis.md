@@ -84,3 +84,64 @@ group by
 limit 	
 	10
 ````
+````sql
+-- Which Genre sold the most units in this time period
+select 
+	Genre,
+	round(sum(Global_Sales),2) as "Global Sales"
+FROM
+	vgsales
+where 
+	year	
+between 
+	2000 
+and 
+	2009
+group by 
+	Genre
+order by 
+round(sum(Global_Sales),2) desc
+````
+````sql
+--Since Nintendo was one of the most profitable publishers in this time period, out of curiousity, we can see how many units in the Action genre Nintendo sold
+SELECT
+	Publisher,
+	Genre,
+	count(Genre) as "Number of Games in the Genre"
+from 
+	vgsales
+where 
+	Genre = "Action" 
+AND
+	Publisher = "Nintendo"
+and
+	year	
+between 
+	2000 
+and 
+	2009
+group by
+	Publisher
+ORDER by
+	count(Genre) desc
+````
+````sql
+--So we see Nintendo makes up a small portion of the units in the Action Genre, so we can alter our previous query slightly to see which publisher sold the most units in the action genre
+SELECT
+	Publisher,
+	Genre,
+	count(Genre) as "Number of Games in the Genre"
+from 
+	vgsales
+where 
+	Genre = "Action" 
+and
+	year	
+between 
+	2000 
+and 
+	2009
+group by
+	Publisher
+ORDER by
+	count(Genre) desc
