@@ -65,10 +65,11 @@ JP_Sales = (SELECT
 ````
 #Top Selling Publishers Between 2000 and 2009
 ````sql
--- What publishers sold the most between 2000 and 2009
+-- What publishers sold the most between 2000 and 2009? What were their average sales (in millions) in during this period
 select 
 	Publisher,
-	round(sum(Global_Sales), 2) as "Total Number of Sales between 2000 and 2009"
+	round(sum(Global_Sales), 2) as "Total Number of Sales between 2000 and 2009",
+	round(avg(Global_Sales),2) as "Average Sales between 2000 and 2009"
 FROM
 	vgsales
 where 
