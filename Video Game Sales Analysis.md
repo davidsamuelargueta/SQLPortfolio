@@ -15,10 +15,8 @@ WHERE
 					vgsales);
 ````
 
-#The Best Selling Game Between 2000 and 2009
--- Best Selling Game in North America
-
 -- Best Selling Game in Europe
+''''sql
 SELECT
 	Name as "Best Selling Game in Europe",
 	Publisher as "Published By",
@@ -30,6 +28,7 @@ WHERE
 					max(EU_Sales)
 				FROM
 					vgsales);
+''''
 -- Best Selling Game in Japan
 SELECT
 	Name as "Best Selling Game in Japan",
