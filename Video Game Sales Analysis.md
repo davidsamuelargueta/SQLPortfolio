@@ -151,3 +151,7 @@ group by
 	Publisher
 ORDER by
 	count(Genre) desc
+````
+# Works Cited
+https://ca.finance.yahoo.com/news/video-games-remain-america-favorite-120000076.html <br>
+https://www.forbes.com/sites/paultassi/2023/02/07/the-nintendo-switch-passes-ps4-and-game-boy-to-become-the-3rd-best-selling-console-ever/?sh=521f5c4963ec
