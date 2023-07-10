@@ -24,7 +24,7 @@ WHERE
 		        2009)
 ````
 
-#Best Selling Game in Europe 
+## Best Selling Game in Europe 
 ````sql
 SELECT
 	Name as "Best Selling Game in Europe (2000 - 2009)",
@@ -45,8 +45,9 @@ WHERE
 			2009)
 ````
 
+## Best Selling Game in Japan
 ````sql
--- Best Selling Game in Japan
+
 SELECT
 	Name as "Best Selling Game in Japan",
 	Publisher as "Published By",
@@ -65,9 +66,9 @@ JP_Sales = (SELECT
 	    and
 		2009)
 ````
-#Top Selling Publishers Between 2000 and 2009
+## Top Selling Publishers Between 2000 and 2009
+What publishers sold the most between 2000 and 2009? What were their average sales (in millions) in during this period
 ````sql
--- What publishers sold the most between 2000 and 2009? What were their average sales (in millions) in during this period
 select 
 	Publisher,
 	round(sum(Global_Sales), 2) as "Total Number of Sales between 2000 and 2009",
@@ -87,8 +88,8 @@ group by
 limit 	
 	10
 ````
+ Which Genre sold the most units in this time period
 ````sql
--- Which Genre sold the most units in this time period
 select 
 	Genre,
 	round(sum(Global_Sales),2) as "Global Sales"
