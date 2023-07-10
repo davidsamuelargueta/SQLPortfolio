@@ -1,9 +1,9 @@
-##Video Game Sales Analysis
+#Video Game Sales Analysis
 
-#Background <br>
+##Background <br>
 The games industry is a massive entertainment field with recently almost 212 Americans partaking in the hobby. It is no surprise that many indsutries such as Netflix has started to enter the field along with major corporations such as Amazon with their Luna cloud gaming platform. Many publishers have had success in previous years, selling millions of units across the globe and continue to do so. To see how successful the industry is, we can take a look at the  sales numbers prior to 2022 all the way to the 1980's. The  dataset used for this project was taken from Kaggle, https://www.kaggle.com/datasets/gregorut/videogamesales, which contains data regarding video games sales in North America, Europe, Japan and Global Sales.
 
-#Best Selling Game in North America
+##Best Selling Game in North America
 ````sql
 SELECT
 	Name as "Best Selling Game in North America (2000 - 2009)",
