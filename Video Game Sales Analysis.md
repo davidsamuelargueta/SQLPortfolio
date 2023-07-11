@@ -66,6 +66,8 @@ JP_Sales = (SELECT
 	    and
 		2009)
 ````
+Note that Wii Sports was bundled with the Wii in NA and Eu but not Japan, which would lead to 
+
 ## Top Selling Publishers Between 2000 and 2009
 What publishers sold the most between 2000 and 2009? What were their average sales (in millions) in during this period
 ````sql
