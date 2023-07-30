@@ -1,7 +1,7 @@
 # Video Game Sales Analysis Mini Project
 
 ## Background <br>
-The games industry is a massive entertainment field with recently almost 212 Americans partaking in the hobby. It is no surprise that many indsutries such as Netflix has started to enter the field along with major corporations such as Amazon with their Luna cloud gaming platform. Many publishers have had success in previous years, selling millions of units across the globe and continue to do so. To see how successful the industry is, we can take a look at the  sales numbers prior to 2022 all the way to the 1980's. The  dataset used for this project was taken from Kaggle, https://www.kaggle.com/datasets/gregorut/videogamesales, which contains data regarding video games sales in North America, Europe, Japan and Global Sales.
+The games industry is a massive entertainment field with recently almost 212 Americans partaking in the hobby. It is no surprise that many indsutries such as Netflix has started to enter the field along with major corporations such as Amazon with their Luna cloud gaming platform. Many publishers have had success in previous years, selling millions of units across the globe and continue to do so. To see how successful the industry is, we can take a look at the sales numbers prior to 2022 all the way to the 1980's. The  dataset used for this project was taken from Kaggle, https://www.kaggle.com/datasets/gregorut/videogamesales, which contains data regarding video games sales in North America, Europe, Japan and Global Sales.
 
 
 ## Setup <br>
@@ -14,6 +14,7 @@ AS SELECT
 	consolesales.Console_Name as "Platform",
 	consolesales.Type as "Type",
 	vgsales.Year,
+	vgsales.Genre,
 	vgsales.Publisher,
 	vgsales.NA_Sales,
 	vgsales.EU_Sales,
@@ -28,7 +29,8 @@ on
 	vgsales.Platform = consolesales.ConsoleID
 ````
 As a result we will get our temporary table:
-![vgproj - 1](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/8d2bc5fa-101b-4173-bba9-bfd882794a8f)
+![Screenshot (10)](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/d83f39bd-3a75-4240-8fc8-27a6f7a3141c)
+
 
 Consider this portion of the table,
 ![vgsales2](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/508a34c3-cec4-4363-9182-71b4ee76729c)
@@ -61,7 +63,6 @@ WHERE
 	Year = 'N/A'
 ````
 Now that our data is cleaned, we can begin the analysis.
-For this analysis, I will be analyzing the data between 2000 to 2010.
 
 # Best Selling Game in Each Region
 ## North America
@@ -79,21 +80,15 @@ WHERE
 	NA_Sales = (SELECT
 			max(NA_Sales)
 		    FROM
-			vgsales
-		    WHERE
-			Year 
-		    BETWEEN 
-			2000 
-		    and 
-			2010)
+			GlobalVideoGameSales)
 ````
 As a result, we get the following results:
 ![Screenshot (6)](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/72ee2ceb-c0b1-4afa-b364-2b2503e8f85e)
 
-So the best selling game in the time period was Wii Sports in 2006 released on the Wii.
+The best selling game in the time period was Wii Sports in 2006 released on the Wii, which sold approximately 41.5 million units.
 
 ## Europe 
-We can use the same query for determing the Best Selling Game in North America for the other regions, 
+We can use the same query for determing the Best Selling Game in the other regions, 
 ````sql
 SELECT
 	Name as "Best Selling Game in Europe (2000 - 2009)",
@@ -102,21 +97,16 @@ SELECT
 	Year,
 	EU_Sales as "European Sales"
 FROM
-	vgsales
+	GlobalVideoGameSales
 WHERE
 	EU_Sales = (SELECT
 			max(EU_Sales)
 		    FROM
-			vgsales
-		    WHERE
-			Year
-		    BETWEEN
-			2000
-		    and
-			2010)
+			GlobalVideoGameSales)
 ````
 ![Screenshot (7)](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/0a38e006-0721-4790-b7c3-038a3b97d3b0)
-Similarly, the Best Selling Game in Europe during this time period was the same as North America.
+
+Similarly, the Best Selling Game in Europe is also Wii Sports, but selling 29.02 million units.
 ## Japan
 Again we use the query as before but for Japan Sales,
 ````sql
@@ -127,21 +117,15 @@ SELECT
 	Year,
 	JP_Sales as "Japan Sales"
 FROM
-	vgsales
+	GlobalVideoGameSales
 WHERE
 JP_Sales = (SELECT
 		max(JP_Sales)
 	    FROM
-		vgsales
-	    WHERE
-		Year
-	    BETWEEN
-		2000
-	    and
-		2010)
+		GlobalVideoGameSales)
 ````
-![Screenshot (9)](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/7c219cef-beb8-4fc9-b7ba-790568d47a6c)
-We can see that the best selling game in Japan in this decade was New Super Mario Bros. in 2006 on the Nintendo DS.
+
+We can see that the best selling game in Japan 
 <br>
 When Wii Sports was released, it was bundled with the Wii in NA and Eu but not Japan, which would could be attributed to its high sale numbers. If the game was bundled in Japan there is no doubt it would have also been the high selling game of the decade. Notice how in all three regions, Nintendo was the Publisher of the best selling games. 
 
@@ -153,13 +137,13 @@ select
 	round(sum(Global_Sales), 2) as "Total Number of Sales between 2000 and 2009",
 	round(avg(Global_Sales),2) as "Average Sales between 2000 and 2009"
 FROM
-	vgsales
+	GlobalVideoGameSales
 where 
 	year	
 between 
 	2000 
 and 
-	2009
+	2010
 group by
  Publisher
  order by
@@ -173,13 +157,13 @@ select
 	Genre,
 	round(sum(Global_Sales),2) as "Global Sales"
 FROM
-	vgsales
+	GlobalVideoGameSales
 where 
 	year	
 between 
 	2000 
 and 
-	2009
+	2010
 group by 
 	Genre
 order by 
@@ -193,7 +177,7 @@ SELECT
 	Genre,
 	count(Genre) as "Number of Games in the Genre"
 from 
-	vgsales
+	GlobalVideoGameSales
 where 
 	Genre = "Action" 
 AND
@@ -203,7 +187,7 @@ and
 between 
 	2000 
 and 
-	2009
+	2010
 group by
 	Publisher
 ORDER by
@@ -217,7 +201,7 @@ SELECT
 	Genre,
 	count(Genre) as "Number of Games in the Genre"
 from 
-	vgsales
+	GlobalVideoGameSales
 where 
 	Genre = "Action" 
 and
@@ -225,7 +209,7 @@ and
 between 
 	2000 
 and 
-	2009
+	2010
 group by
 	Publisher
 ORDER by
@@ -235,4 +219,5 @@ ORDER by
 https://ca.finance.yahoo.com/news/video-games-remain-america-favorite-120000076.html <br>
 https://www.forbes.com/sites/paultassi/2023/02/07/the-nintendo-switch-passes-ps4-and-game-boy-to-become-the-3rd-best-selling-console-ever/?sh=521f5c4963ec <br>
 https://www.kaggle.com/datasets/jaimepazlopes/game-console-manufactor-and-sales
+https://www.ign.com/articles/animal-crossing-new-horizons-japans-best-selling-game-of-all-time
 
