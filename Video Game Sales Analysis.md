@@ -85,7 +85,7 @@ WHERE
 As a result, we get the following results:
 ![Screenshot (6)](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/72ee2ceb-c0b1-4afa-b364-2b2503e8f85e)
 
-The best selling game in the time period was Wii Sports in 2006 released on the Wii, which sold approximately 41.5 million units.
+The best selling game from the time period is Wii Sports in 2006 released on the Wii, which sold approximately 41.5 million units.
 
 ## Europe 
 We can use the same query for determing the Best Selling Game in the other regions, 
@@ -129,8 +129,8 @@ We can see that the best selling game in Japan
 <br>
 When Wii Sports was released, it was bundled with the Wii in NA and Eu but not Japan, which would could be attributed to its high sale numbers. If the game was bundled in Japan there is no doubt it would have also been the high selling game of the decade. Notice how in all three regions, Nintendo was the Publisher of the best selling games. 
 
-## Top Selling Publishers Between 2000 and 2010
-Nintendo is a powerhouse in the industry even to this day in 2023. Nintendo is finding massive success with its games and outselling big releases on the PLaystation and Xbox. But it begs the next question, if they were responsible for the best selling games in the early to late 2000's, were they also the most successful publisher in those 10 years.
+## Top Selling Publishers from 2000 to 2010
+Nintendo is a powerhouse in the industry even to this day in 2023. Nintendo is finding massive success with its games and outselling big releases on the Playstation and Xbox. But it begs the next question, if they were responsible for the best selling games in the early to late 2000's, were they also finding success in the 2000's.
 ````sql
 select 
 	Publisher,
