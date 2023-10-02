@@ -1,1 +1,1 @@
-Hello, here you will find some of my work that I have done in SQL.
+Hello, here you will find the projects I am working on or have completed using MySQL. The purpose of this repository is for me to rpractice and apply my SQL skills with datasets from a variey of sources such as Kaggle and Maven Analytics. Should you have any inquires or suggestions please feel free to contact me.
