@@ -3,126 +3,73 @@
 ## Background <br>
 The games industry is a massive entertainment field with recently almost 212 Americans partaking in the hobby. It is no surprise that many indsutries such as Netflix has started to enter the field along with major corporations such as Amazon with their Luna cloud gaming platform. Many publishers have had success in previous years, selling millions of units across the globe and continue to do so. To see how successful the industry is, we can take a look at the sales numbers prior to 2022 all the way to the 1980's. The  dataset used for this project was taken from Kaggle, https://www.kaggle.com/datasets/gregorut/videogamesales, which contains data regarding video games sales in North America, Europe, Japan and Global Sales.
 
-
-## Setup <br>
-First I create a Temporary Table as I want to create a new table to include the full names of the platforms and the type of platform the games are played on. 
-````sql
-create TEMPORARY TABLE 
-	GlobalVideoGameSales 
-AS SELECT
-	vgsales.Name as "Name",
-	consolesales.Console_Name as "Platform",
-	consolesales.Type as "Type",
-	vgsales.Year,
-	vgsales.Genre,
-	vgsales.Publisher,
-	vgsales.NA_Sales,
-	vgsales.EU_Sales,
-	vgsales.JP_Sales,
-	vgsales.Other_Sales,
-	vgsales.Global_Sales
-FROM
-	vgsales
-LEFT JOIN
-	consolesales
-on
-	vgsales.Platform = consolesales.ConsoleID
-````
-As a result we will get our temporary table:
-![Screenshot (10)](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/d83f39bd-3a75-4240-8fc8-27a6f7a3141c)
-
-
-Consider this portion of the table,
-![vgsales2](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/508a34c3-cec4-4363-9182-71b4ee76729c)
-From viewing the data, we can see that there as are some games that have no year in them and noted as _N/A_. Now one could research and fill in the data for each of the games.
-For example, the game Rock Band was released in 2008 on the Wii, so we can use query below to fill in the missing information
-````sql
-UPDATE
-	GlobalVideoGameSales
-set 
-	year = 2008
-WHERE
-	Name = "Rock Band"
-and 
-	Platform = "Wii"
-````
-But if we we were count the number of games that had no years with the query
-````sql
-select 
-	count(*)
-FROM
-	GlobalVideoGameSales
-WHERE
-	Year = 'N/A'
-````
-We would get a total of 271 games that have no years.So it would be best to ignore these games and remove them from the table with following query,
-````sql
-DELETE FROM
-	GlobalVideoGameSales
-WHERE
-	Year = 'N/A'
-````
-Now that our data is cleaned, we can begin the analysis.
-
 # Best Selling Game in Each Region
 ## North America
 We can determine the Best Selling Game in North America in the period mentioned above. We can do so with the query:
 ````sql
 SELECT
-	Name as "Best Selling Game in North America (2000 - 2010)",
-	Publisher as "Published By",
-	Platform,
-	Year,
-	NA_Sales as "North American Sales"
+	v.Name as "Name",
+	c.Console_Name as "Platform",
+	c.Type as "Type",
+	v.Year,
+	v.Genre,
+	v.Publisher,
+	v.NA_Sales
 FROM
-	GlobalVideoGameSales
-WHERE
-	NA_Sales = (SELECT
-			max(NA_Sales)
-		    FROM
-			GlobalVideoGameSales)
+	videogamesales.vgsales v
+LEFT JOIN
+	videogamesales.console c
+on
+	v.Platform = c.ConsoleID
+where 
+	v.NA_Sales = (select max(v.NA_Sales) FROM videogamesales.vgsales v) 
 ````
-As a result, we get the following results:
-![Screenshot (6)](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/72ee2ceb-c0b1-4afa-b364-2b2503e8f85e)
+The result of the query shows that the best selling game in North America is Wii Sports which sold approximately 41.5 million units.
+![image](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/3a9136f9-0a94-4014-bfbb-4503c3fe6a1c)
 
-The best selling game from the time period is Wii Sports in 2006 released on the Wii, which sold approximately 41.5 million units.
 
 ## Europe 
 We can use the same query for determing the Best Selling Game in the other regions, 
 ````sql
 SELECT
-	Name as "Best Selling Game in Europe (2000 - 2009)",
-	Publisher as "Published By",
-	Platform,
-	Year,
-	EU_Sales as "European Sales"
+	v.Name as "Name",
+	c.Console_Name as "Platform",
+	c.Type as "Type",
+	v.Year,
+	v.Genre,
+	v.Publisher,
+	v.EU_Sales as 'EU Sales'
 FROM
-	GlobalVideoGameSales
-WHERE
-	EU_Sales = (SELECT
-			max(EU_Sales)
-		    FROM
-			GlobalVideoGameSales)
+	videogamesales.vgsales v
+LEFT JOIN
+	videogamesales.console c
+on
+	v.Platform = c.ConsoleID
+where 
+	v.EU_Sales = (select max(v.EU_Sales) FROM videogamesales.vgsales v) 
 ````
-![Screenshot (7)](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/0a38e006-0721-4790-b7c3-038a3b97d3b0)
-
+![image](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/cbc76a7d-f625-42ee-a81b-5b3af7e55e6c)
 Similarly, the Best Selling Game in Europe is also Wii Sports, but selling 29.02 million units.
-## Japan
+
+##### Japan
 Again we use the query as before but for Japan Sales,
 ````sql
 SELECT
-	Name as "Best Selling Game in Japan",
-	Publisher as "Published By",
-	Platform,
-	Year,
-	JP_Sales as "Japan Sales"
+	v.Name as "Name",
+	c.Console_Name as "Platform",
+	c.Type as "Type",
+	v.Year,
+	v.Genre,
+	v.Publisher,
+	v.JP_Sales as 'Japan Sales'
 FROM
-	GlobalVideoGameSales
-WHERE
-JP_Sales = (SELECT
-		max(JP_Sales)
-	    FROM
-		GlobalVideoGameSales)
+	videogamesales.vgsales v
+LEFT JOIN
+	videogamesales.console c
+on
+	v.Platform = c.ConsoleID
+where 
+	v.JP_Sales = (select max(v.JP_Sales) FROM videogamesales.vgsales v) 
 ````
 
 We can see that the best selling game in Japan 
