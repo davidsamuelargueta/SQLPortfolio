@@ -106,7 +106,7 @@ From the query, the amount of money earned in 2015 was $801,944.70 as shown in t
 
 ![image](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/6c78a27b-4b30-49bd-b04a-19d8fde80567)
 
-With our analysis done, we can compile it into PowerBI and visualize our findings, the file can be found here.
+With our analysis done, we can compile it into PowerBI and visualize our findings, the file can be found [here](https://github.com/davidsamuelargueta/PowerBIProjects/blob/main/torontopizzeria.pbix).
 ![image](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/18f333b8-1161-41b7-bb68-6542b05b89ad)
 
 
