@@ -83,29 +83,6 @@ order by
 ![image](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/3123435b-03cc-47f0-a349-7ebe3b628451)
 The least sold pizzas include The Greek Pizza, The Green Garden Pizza, The Chicken Alfredo Pizza and The Calabrese Pizza, all of which sold less than 100. From this we could remove these pizzas of the menu to cut costs or run a promotion such as buy one get one free with the four pizzas mentioned above.
 
-#### How much money did we make this year? Can we indentify any seasonality in the sales?
-To determine the amount the pizzeria made in 2015, we first need to multiply the prices by the number of pizza types ordered.We will need to reuse parts of the query used above and multiply the results by the price of the pizza types and store them in a subquery. We can then take the sum of that subquery to get the total amount of money earned before expenses. The query looks as such below,
-```` sql
-select 
-	sum(prod_pizza) as 'Total Amount Earned in 2015 (before Expenses)'
-from (select 
-	p.pizza_id,
-	count(od.pizza_id)*p.price prod_pizza
-FROM
-	torontopizzeria.order_details od
-join
-	torontopizzeria.pizzas p 
-on 
-	od.pizza_id = p.pizza_id
-group by 
-	od.pizza_id, p.price 
-order by 
-	count(od.pizza_id) desc) t
-````
-From the query, the amount of money earned in 2015 was $801,944.70 as shown in the image below, this is before our expenses.
-
-![image](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/6c78a27b-4b30-49bd-b04a-19d8fde80567)
-
 With our analysis done, we can compile it into PowerBI and visualize our findings, the file can be found [here](https://github.com/davidsamuelargueta/PowerBIProjects/blob/main/torontopizzeria.pbix).
 ![image](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/18f333b8-1161-41b7-bb68-6542b05b89ad)
 
