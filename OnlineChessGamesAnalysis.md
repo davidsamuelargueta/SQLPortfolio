@@ -90,5 +90,5 @@ group by
 
 ````
 
-####  Which user won the most amount of games? In what percentage of those games was the user the higher rated player?
+<!---Which user won the most amount of games? In what percentage of those games was the user the higher rated player?->
 
