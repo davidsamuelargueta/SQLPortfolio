@@ -1,4 +1,4 @@
-
+This project is currently a work in progress and not complete.
 
 ###### Which countries have the most ski resorts? Are there noticable clusters?
 ```` sql
