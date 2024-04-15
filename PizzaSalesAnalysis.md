@@ -83,7 +83,7 @@ order by
 ![image](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/3123435b-03cc-47f0-a349-7ebe3b628451)
 The least sold pizzas include The Greek Pizza, The Green Garden Pizza, The Chicken Alfredo Pizza and The Calabrese Pizza, all of which sold less than 100. From this we could remove these pizzas of the menu to cut costs or run a promotion such as buy one get one free with the four pizzas mentioned above.
 
-With our analysis done, we can compile it into PowerBI and visualize our findings, the file can be found [here](https://github.com/davidsamuelargueta/PowerBIProjects/blob/main/torontopizzeria.pbix).
+With our analysis done, we can compile it into PowerBI and visualize our findings.
 ![image](https://github.com/davidsamuelargueta/SQLProjects/assets/119771151/18f333b8-1161-41b7-bb68-6542b05b89ad)
 
 
